@@ -31,7 +31,7 @@ spartia/
 
 ## Datos de ejercicios
 
-El catálogo inicial se importa desde [free-exercise-db](https://github.com/yuhonas/free-exercise-db) (licencia Unlicense). Solo se copian los textos, no las imágenes, porque su origen no está claro. Los detalles están en el ADR 0001 (pendiente).
+El catálogo inicial se importa desde [free-exercise-db](https://github.com/yuhonas/free-exercise-db) (licencia Unlicense). Solo se copian los textos, no las imágenes, porque su origen no está claro. Los detalles están en el [ADR 0001](docs/decisiones/0001-fuente-de-ejercicios.md).
 
 ## Cómo correrlo
 

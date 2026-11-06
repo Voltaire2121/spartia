@@ -1,6 +1,6 @@
 # Plan oficial de Spartia
 
-> **Estado actual:** Módulo 0, paso 0.2 (repo y plan oficial)
+> **Estado actual:** Módulo 1, paso 1.1 (`apps/api` con TypeScript)
 > **Última actualización:** 2026-11-06
 
 Este archivo es el roadmap del proyecto. Cada paso es pequeño, se puede verificar y termina en un commit. Al cerrar un paso se marca con `[x]`, el hash corto del commit y el enlace a su nota de la guía. Los cambios al plan se hacen con commits `docs(plan): ...`.
@@ -26,9 +26,9 @@ Este archivo es el roadmap del proyecto. Cada paso es pequeño, se puede verific
 
 ## Módulo 0 · Preparación
 
-- [x] **0.1** Entorno solo para iOS: Node 22 (fnm), Watchman, Docker vía Colima, Xcode 26.6, CocoaPods. Se borró el runtime de iOS 26.5 para liberar espacio.
-- [ ] **0.2** `git init`, `.gitignore`, `README.md` inicial y este `docs/PLAN.md`
-- [ ] **0.3** ADR `docs/decisiones/0001-fuente-de-ejercicios.md` y actualizar `CLAUDE.md` (nuevo modo de trabajo, solo iOS, sin imágenes del dataset)
+- [x] **0.1** Entorno solo para iOS: Node 22 (fnm), Watchman, Docker vía Colima, Xcode 26.6, CocoaPods. Se borró el runtime de iOS 26.5 para liberar espacio. ([guía](guia/00-entorno-y-repo.md))
+- [x] **0.2** `git init`, `.gitignore`, `README.md` inicial y este `docs/PLAN.md` (`1b9dd9e`)
+- [x] **0.3** ADR [`0001-fuente-de-ejercicios`](decisiones/0001-fuente-de-ejercicios.md) y actualizar `CLAUDE.md` (nuevo modo de trabajo, solo iOS, sin imágenes del dataset) ([guía](guia/00-entorno-y-repo.md))
 
 ## Módulo 1 · Node + Express con datos en memoria
 
