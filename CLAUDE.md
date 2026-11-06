@@ -1,143 +1,146 @@
-# Spartia Workout Tracker — contexto para Claude Code
+# Spartia Workout Tracker — context for Claude Code
 
-## Qué es este proyecto
+## What this project is
 
-Spartia es una app móvil para registrar entrenamientos de gimnasio. El usuario:
+Spartia is a mobile app to log gym workouts. The user:
 
-1. crea rutinas (con superseries de 2 o más ejercicios),
-2. las asigna a los días de la semana,
-3. las ejecuta serie por serie viendo lo que hizo la vez anterior,
-4. ve un resumen con sus avances y PRs, y el progreso de la semana.
+1. creates routines (with supersets of 2 or more exercises),
+2. assigns them to days of the week,
+3. runs them set by set, seeing what they did last time,
+4. sees a summary with their progress and PRs, plus the week's progress.
 
-Es el **proyecto principal del portafolio de Cristian** en GitHub. Cristian es frontend developer (React, TypeScript, Vite) y con este proyecto aprende **React Native y backend con Node**. El repo tiene que verse profesional: arquitectura por capas, tipado estricto, tests, commits limpios y un README que explique las decisiones.
+It's **Cristian's main portfolio project** on GitHub. Cristian is a frontend developer (React, TypeScript, Vite) and uses this project to learn **React Native and Node backend**. The repo must look professional: layered architecture, strict typing, tests, clean commits and a README that explains the decisions.
 
-## Plan oficial
+## Official plan
 
-El roadmap vive en **`docs/PLAN.md`**. Al empezar una sesión, léelo para saber en qué paso vamos. Al cerrar un paso, márcalo con `[x]`, el hash corto del commit y el enlace a su nota de la guía, y actualiza el bloque "Estado actual". Los cambios al plan van en commits `docs(plan): ...`. Antes de escribir código móvil se hace el plan de frontend (`docs/PLAN-MOBILE.md`, paso 4.0).
+The roadmap lives in **`docs/PLAN.md`**. At the start of a session, read it to know which step we're on. When a step is done, mark it with `[x]`, the short commit hash and a link to its guide note, and update the "Current status" block. Changes to the plan go in `docs(plan): ...` commits. Before writing any mobile code, we write the frontend plan (`docs/PLAN-MOBILE.md`, step 4.0).
 
-Las decisiones de arquitectura se registran como ADR en `docs/decisiones/NNNN-titulo.md`.
+Architecture decisions are recorded as ADRs in `docs/decisions/NNNN-title.md`.
 
-## Cómo trabajar conmigo: modo guía
+## How to work with me: guide mode
 
-Este repo es también un curso. **Me importa más aprender que avanzar rápido.**
+This repo is also a course. **I care more about learning than about going fast.**
 
-### Quién escribe qué
+### Who writes what
 
-- **Backend (`apps/api`): lo escribo yo.** Tú explicas, me dices qué archivo crear y qué debe hacer, y me das fragmentos cortos solo para la sintaxis nueva. **Nunca escribas el archivo completo ni edites mi código del API.** Si me atasco, dame pistas cada vez más concretas antes de llegar a la solución. Cuando termine, revisa mi `git diff` y coméntame bugs, buenas prácticas y por qué.
-- **Ruta del backend:** array en memoria → PostgreSQL con SQL a mano (`pg`) → Prisma. No saltes etapas.
-- **App móvil (`apps/mobile`): la escribes tú**, explicándome lo nuevo de React Native. Yo reviso.
-- **Documentación** (`docs/`, README, ADR, notas de la guía): la escribes tú.
+- **Backend (`apps/api`): I write it.** You explain, tell me which file to create and what it should do, and give me short snippets only for new syntax. **Never write the whole file or edit my API code.** If I get stuck, give me progressively more specific hints before showing the solution. When I'm done, review my `git diff` and point out bugs, best practices and the reasons behind them.
+- **Format that works for me:** small mini-steps (A, B, C…), **one per message**, with a progress map (✅/🔵/⬜), each command with a short explanation, snippets explained line by line, and a quick test at the end of each mini-step. Check my files on disk before moving on (sometimes I forget to save).
+- **Backend path:** in-memory array → PostgreSQL with hand-written SQL (`pg`) → Prisma. Don't skip stages.
+- **Mobile app (`apps/mobile`): you write it**, explaining what's new in React Native. I review.
+- **Documentation** (`docs/`, README, ADRs, guide notes): you write it.
 
-### Reglas generales
+### General rules
 
-- **Explica antes de hacer.** Al inicio de cada paso di en 2–4 frases qué vamos a construir y por qué se hace así (la decisión de arquitectura, la alternativa que descartamos).
-- **Pasos pequeños y verificables.** Un paso = algo que puedo correr y ver funcionar (un comando, un endpoint con curl, una pantalla en el emulador). Termina cada paso con un **✅ Checkpoint** que diga exactamente qué comando correr y qué debo ver.
-- **Yo corro los comandos importantes.** Los comandos que levantan cosas o tocan la base de datos (`docker compose up`, `prisma migrate`, `npm run seed`, el simulador) dímelos para que los corra yo, salvo que te pida hacerlo tú.
-- **Conceptos nuevos de backend o React Native:** cuando aparezca uno (middleware, ORM, migración, FlatList, Metro…), explícalo en un párrafo corto con una analogía de frontend/React que yo ya conozca.
-- **Al cerrar cada paso**, agrega una nota en `docs/guia/NN-titulo.md` con: objetivo, qué se hizo, conceptos clave, comandos, errores comunes y un **🧠 Reto** pequeño para que yo lo resuelva solo.
-- **Un commit por paso**, con Conventional Commits (`feat(api): ...`, `chore(mobile): ...`, `docs(guia): ...`). Propón el mensaje y espera a que yo diga que sí antes de hacer commit.
-- Escríbeme en español. El código, los nombres de variables y los commits van en inglés; los textos que ve el usuario de la app, en español.
-- Si algo no está claro o hay que decidir algo que cuesta deshacer, pregúntame antes.
+- **Explain before doing.** At the start of each step, say in 2–4 sentences what we're building and why it's done that way (the architecture decision, the alternative we ruled out).
+- **Small, verifiable steps.** One step = something I can run and see working (a command, an endpoint with curl, a screen in the simulator). End each step with a **✅ Checkpoint** that says exactly which command to run and what I should see.
+- **I run the important commands.** Commands that start things or touch the database (`docker compose up`, `prisma migrate`, `npm run seed`, the simulator): tell me so I run them, unless I ask you to.
+- **New backend or React Native concepts:** when one shows up (middleware, ORM, migration, FlatList, Metro…), explain it in a short paragraph with a frontend/React analogy I already know.
+- **When closing each step**, add a note in `docs/guide/NN-title.md` with: goal, what we did, key concepts, commands, common errors and a small **🧠 Challenge** for me to solve on my own.
+- **One commit per step**, using Conventional Commits (`feat(api): ...`, `chore(mobile): ...`, `docs(guide): ...`). Propose the message and wait for my "yes" before committing.
+- **Talk to me in English** (since step 1.4; I want to practice). Code, comments in any file, variable names, commits and docs are in English. App user-facing text stays in Spanish.
+- If something is unclear or a decision is hard to undo, ask me first.
 
-## Stack (decidido)
+## Stack (decided)
 
-| Capa | Tecnología | Por qué |
+| Layer | Technology | Why |
 |---|---|---|
-| App móvil | **React Native CLI** + TypeScript (no Expo). **Por ahora solo iOS** | Cristian quiere dominar el tooling nativo (Xcode, Metro y, más adelante, Gradle) para entrevistas en empresas grandes. Android se pospone porque el MacBook (M2, 8 GB) no aguanta bien Android Studio |
-| Navegación | React Navigation (native stack + bottom tabs) | Estándar de la industria |
-| Datos remotos | TanStack Query | Caché, reintentos y paginación sin reinventar |
-| API | Node 22 (fnm), **Express**, TypeScript | Lo pedido; el más común en ofertas |
-| Base de datos | **PostgreSQL** | Datos relacionales (rutinas → ejercicios → series); los PRs y el volumen salen de consultas SQL |
-| ORM | **Prisma** | Esquema legible, migraciones, muy pedido en ofertas |
-| Validación | **Zod** | Valida query params y bodies; los tipos se infieren del esquema |
+| Mobile app | **React Native CLI** + TypeScript (no Expo). **iOS only for now** | Cristian wants to master native tooling (Xcode, Metro and later Gradle) for interviews at big companies. Android is postponed because the MacBook (M2, 8 GB) doesn't handle Android Studio well |
+| Navigation | React Navigation (native stack + bottom tabs) | Industry standard |
+| Remote data | TanStack Query | Caching, retries and pagination without reinventing them |
+| API | Node 22 (fnm), **Express**, TypeScript 6.0 | Requested; the most common in job posts. TS 6.0 because typescript-eslint doesn't support TS 7 yet |
+| Database | **PostgreSQL** | Relational data (routines → exercises → sets); PRs and volume come from SQL queries |
+| ORM | **Prisma** | Readable schema, migrations, in demand |
+| Validation | **Zod** | Validates query params, bodies and env vars; types are inferred from the schema |
 | Tests | Vitest + Supertest (API), Jest + React Native Testing Library (app) | |
-| Base de datos local | Docker Compose (`postgres:16`) sobre **Colima** (no Docker Desktop, para ahorrar RAM) | La de producción irá en Neon |
-| Calidad | ESLint + Prettier, `strict: true` en tsconfig | |
+| Local database | Docker Compose (`postgres:16`) on **Colima** (not Docker Desktop, to save RAM) | Production will be on Neon |
+| Quality | ESLint (`recommendedTypeChecked`) + Prettier (single quotes, no semicolons), `strict: true` | |
 
-**No usar:** Expo, MongoDB/Mongoose, JavaScript sin tipos, colores escritos a mano en componentes.
+**Don't use:** Expo, MongoDB/Mongoose, untyped JavaScript, hard-coded colors in components.
 
-## Estructura del repo
+## Repo structure
 
 ```
 spartia/
 ├── apps/
 │   ├── api/          # Node + Express + Prisma
 │   └── mobile/       # React Native CLI
-├── design/           # Sistema de diseño (pantallas PNG/HTML, tokens). Ver design/README.md
+├── design/           # Design system (PNG/HTML screens, tokens). See design/README.md
 ├── docs/
-│   ├── PLAN.md       # Roadmap oficial con checkboxes
-│   ├── decisiones/   # ADR (registros de decisiones de arquitectura)
-│   └── guia/         # La guía paso a paso que vamos escribiendo
+│   ├── PLAN.md       # Official roadmap with checkboxes
+│   ├── decisions/    # ADRs (Architecture Decision Records)
+│   └── guide/        # The step-by-step guide we write as we go
 ├── CLAUDE.md
-└── README.md         # Portada del portafolio
+└── README.md         # Portfolio front page
 ```
 
-Por ahora `api` y `mobile` son proyectos independientes, cada uno con su `package.json`. Más adelante, en una lección aparte, se agrega un paquete `packages/shared` con los tipos y esquemas Zod compartidos.
+For now `api` and `mobile` are independent projects, each with its own `package.json`. Later, in a separate lesson, we add a `packages/shared` package with shared types and Zod schemas.
 
-## Arquitectura del API (por capas)
+## API architecture (layered)
 
 ```
 apps/api/src/
-├── app.ts                # crea la app de Express (sin listen) → testeable con Supertest
-├── server.ts             # lee config y hace listen
-├── config/env.ts         # variables de entorno validadas con Zod
-├── lib/prisma.ts         # una sola instancia de PrismaClient (desde el Módulo 3; antes, el repository usa un array y luego `pg`)
+├── app.ts                # builds the Express app (no listen) → testable with Supertest
+├── server.ts             # reads config and calls listen
+├── config/env.ts         # environment variables validated with Zod
+├── lib/prisma.ts         # a single PrismaClient instance (from Module 3; before that, the repository uses an array and then `pg`)
 ├── middlewares/          # errorHandler, notFound, validate(schema)
 ├── modules/
 │   └── exercises/
-│       ├── exercise.routes.ts      # rutas → controller
-│       ├── exercise.controller.ts  # HTTP: lee req, responde res. Sin lógica de negocio
-│       ├── exercise.service.ts     # reglas de negocio
-│       ├── exercise.repository.ts  # único lugar que habla con Prisma
-│       ├── exercise.schemas.ts     # Zod: query params y DTOs
+│       ├── exercise.routes.ts      # routes → controller
+│       ├── exercise.controller.ts  # HTTP: reads req, writes res. No business logic
+│       ├── exercise.service.ts     # business rules
+│       ├── exercise.repository.ts  # the only place that talks to the database
+│       ├── exercise.schemas.ts     # Zod: query params and DTOs
 │       └── exercise.test.ts
 └── utils/
 ```
 
-Convenciones:
-- Respuesta de listas: `{ "data": [...], "meta": { "page", "pageSize", "total", "totalPages" } }`.
-- Errores: `{ "error": { "code": "NOT_FOUND", "message": "..." } }` con el código HTTP correcto, siempre desde el `errorHandler` central.
-- Todas las rutas bajo `/api/v1`. Hay `GET /health` para revisar que el servidor está vivo.
-- El controller nunca importa Prisma; el repository nunca conoce `req`/`res`.
+Conventions:
+- List responses: `{ "data": [...], "meta": { "page", "pageSize", "total", "totalPages" } }`.
+- Errors: `{ "error": { "code": "NOT_FOUND", "message": "..." } }` with the right HTTP status, always from the central `errorHandler`.
+- All routes under `/api/v1`. There's `GET /health` to check the server is alive.
+- The controller never imports the database client; the repository never knows about `req`/`res`.
 
-## Datos de ejercicios
+## Exercise data
 
-Decisión completa en `docs/decisiones/0001-fuente-de-ejercicios.md`. **Nuestra tabla es la fuente de verdad**; el dataset externo solo sirve para la carga inicial.
+Full decision in `docs/decisions/0001-exercise-data-source.md`. **Our table is the source of truth**; the external dataset is only used for the initial load.
 
-Origen: **free-exercise-db** (github.com/yuhonas/free-exercise-db), unos 876 ejercicios, licencia **Unlicense**.
-- JSON completo: `https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/dist/exercises.json`
-- Campos: `id` (slug, p. ej. `3_4_Sit-Up`), `name`, `force`, `level`, `mechanic`, `equipment`, `primaryMuscles[]`, `secondaryMuscles[]`, `instructions[]`, `category`, `images[]`.
-- `force`, `mechanic` y `equipment` pueden venir en `null`.
-- **No usar las imágenes del dataset.** Su origen no está claro (el mantenedor lo reconoce en el issue #2) y la app se va a monetizar. El API devuelve `imageUrls: []` y la app muestra un marcador. Las imágenes licenciadas vendrán después.
-- Los datos se **copian a nuestra base** con un script idempotente (`upsert` por `slug`), no se consultan en vivo.
-- Guarda `slug` (el `id` original) y `source`: `"free-exercise-db"` para los importados y `"spartia"` para los creados por nosotros (`POST`).
+Source: **free-exercise-db** (github.com/yuhonas/free-exercise-db), about 876 exercises, **Unlicense**.
+- Full JSON: `https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/dist/exercises.json`
+- Fields: `id` (slug, e.g. `3_4_Sit-Up`), `name`, `force`, `level`, `mechanic`, `equipment`, `primaryMuscles[]`, `secondaryMuscles[]`, `instructions[]`, `category`, `images[]`.
+- `force`, `mechanic` and `equipment` can be `null`.
+- **Don't use the dataset images.** Their origin is unclear (the maintainer admits it in issue #2) and the app will be monetized. The API returns `imageUrls: []` and the app shows a placeholder. Licensed images will come later.
+- The data is **copied into our database** with an idempotent script (`upsert` by `slug`), never queried live.
+- Store `slug` (the original `id`) and `source`: `"free-exercise-db"` for imported ones and `"spartia"` for ones we create (`POST`).
 
-## App móvil
+## Mobile app
 
-- Tema: `apps/mobile/src/theme/` generado desde `design/tokens.json` (colores claro/oscuro, espaciado, radios, tipografía Inter). Soporta tema oscuro con `useColorScheme()`.
-- **Antes de construir una pantalla, abre `design/screens/<Pantalla>.png` (y `.dark.png`), lee su `.md` y, si necesitas medidas, el `.html` con `design/components.css`.** El resultado debe parecerse lo más posible a esas imágenes.
-- Arquitectura: se define en el paso 4.0 (`docs/PLAN-MOBILE.md`) con clean architecture por features (`domain/`, `data/`, `presentation/`) y `core/` + `ui/` compartidos. **No escribas código móvil antes de ese plan.**
-- Simulador: iPhone 16 con iOS 18.6 (es el único runtime instalado; no instales otros sin preguntar, porque el disco está justo).
-- URL del API en desarrollo: iOS simulator → `http://localhost:3000`, teléfono físico → la IP de la computadora en la red local. (Android, cuando llegue: `http://10.0.2.2:3000`.)
-- Listas largas con `FlatList` (con `keyExtractor`, `onEndReached` para paginar e imágenes con tamaño fijo).
+- Theme: `apps/mobile/src/theme/` generated from `design/tokens.json` (light/dark colors, spacing, radii, Inter typography). Supports dark mode with `useColorScheme()`.
+- **Before building a screen, open `design/screens/<Screen>.png` (and `.dark.png`), read its `.md` and, if you need measurements, the `.html` with `design/components.css`.** The result should look as close as possible to those images.
+- Architecture: defined in step 4.0 (`docs/PLAN-MOBILE.md`) with clean architecture by feature (`domain/`, `data/`, `presentation/`) plus shared `core/` and `ui/`. **Don't write mobile code before that plan.**
+- Simulator: iPhone 16 on iOS 18.6 (the only runtime installed; don't install others without asking, disk space is tight).
+- API URL in development: iOS simulator → `http://localhost:3000`, physical phone → the computer's IP on the local network. (Android, when it comes: `http://10.0.2.2:3000`.)
+- Long lists with `FlatList` (with `keyExtractor`, `onEndReached` for pagination and fixed-size images).
 
-## Comandos (se van completando)
+## Commands (growing as we go)
 
 ```bash
 # Docker (Colima)
 colima start --cpu 2 --memory 2
-colima stop                 # al terminar, para liberar RAM
+colima stop                 # when done, to free RAM
 
 # API
 cd apps/api
-docker compose up -d        # Postgres local
-npx prisma migrate dev      # aplicar migraciones
-npm run seed                # cargar ejercicios
 npm run dev                 # http://localhost:3000
-npm test
+npm run check               # typecheck + lint + format:check
+npm run format              # apply Prettier
+docker compose up -d        # local Postgres (Module 2)
+npx prisma migrate dev      # apply migrations (Module 3)
+npm run seed                # load exercises (Module 3)
+npm test                    # (step 1.12)
 
 # Mobile
 cd apps/mobile
 npm start                   # Metro
-npm run ios                 # (Android pospuesto)
+npm run ios                 # (Android postponed)
 ```

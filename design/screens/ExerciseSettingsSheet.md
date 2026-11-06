@@ -1,3 +1,3 @@
 # ExerciseSettingsSheet
 
-Ajustes de un ejercicio dentro de la rutina: **series, rango de reps, descanso** y con qué ejercicio forma **superserie**. Acciones secundarias: Reemplazar, Quitar (`danger`).
+Settings for an exercise inside the routine: **sets, rep range, rest**, and which exercise it forms a **superset** with. Secondary actions: Reemplazar (replace), Quitar (remove, `danger`).

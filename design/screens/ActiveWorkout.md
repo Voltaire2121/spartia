@@ -1,9 +1,9 @@
 # ActiveWorkout
 
-Pantalla de **entrenamiento en curso**, el corazón de la app.
+**Workout in progress** screen, the heart of the app.
 
-- Cabecera: nombre de rutina, cronómetro, barra de progreso de series (`2/9`) y botón `Terminar`.
-- Tarjeta de superserie: ejercicios A y B con nota opcional; tabla con SERIE · ANTERIOR · KG · REPS · ✓.
-- **ANTERIOR** muestra lo hecho la última vez; el punto `pr` indica que ese valor fue un PR.
-- KG/REPS vienen pre-llenados como fantasma (`ink-placeholder`) con lo anterior; la celda activa se resalta con `primary`. Las flechas ▲ sugieren subir (progresión).
-- ✓ completa la serie (fila `success-soft`) y arranca **RestTimer**.
+- Header: routine name, stopwatch, set progress bar (`2/9`) and a `Terminar` (finish) button.
+- Superset card: exercises A and B with an optional note; table with SERIE · ANTERIOR · KG · REPS · ✓.
+- **ANTERIOR** (previous) shows what was done last time; the `pr` dot means that value was a PR.
+- KG/REPS come prefilled as ghost text (`ink-placeholder`) with the previous values; the active cell is highlighted with `primary`. ▲ arrows suggest going up (progression).
+- ✓ completes the set (`success-soft` row) and starts **RestTimer**.

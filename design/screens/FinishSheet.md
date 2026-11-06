@@ -1,3 +1,3 @@
 # FinishSheet
 
-Confirmación al tocar **Terminar**: muestra series completadas; acciones Terminar y ver resumen (`primary`), Seguir entrenando, Descartar (`danger`).
+Confirmation when tapping **Terminar** (finish): shows completed sets; actions Terminar y ver resumen (finish and see summary, `primary`), Seguir entrenando (keep training), Descartar (discard, `danger`).

@@ -1,6 +1,6 @@
 # RoutineBuilderEmpty
 
-Estado inicial de **crear rutina**. El nombre es editable en la cabecera (placeholder `ink-placeholder`).
+Initial state of **create routine**. The name is editable in the header (placeholder in `ink-placeholder`).
 
-- El bloque azul `primary` "Agregar ejercicios" es la única acción; abre **ExercisePickerSheet**.
-- Los esqueletos (`bg-field`) anticipan cómo se verá la lista.
+- The blue `primary` "Agregar ejercicios" (add exercises) block is the only action; it opens **ExercisePickerSheet**.
+- Skeletons (`bg-field`) hint at what the list will look like.

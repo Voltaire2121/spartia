@@ -1,8 +1,8 @@
 # Button
 
-Botones en píldora (`radius-pill`), altura 48 (o 36 en `sm`).
+Pill buttons (`radius-pill`), height 48 (or 36 for `sm`).
 
-- **primary**: una sola acción principal por pantalla (Empezar, Guardar, Listo).
-- **secondary**: borde `primary`, acción alternativa junto a la principal.
-- **quiet**: acciones de utilidad dentro de tarjetas (Agregar serie, Descanso).
-- **danger**: solo texto `danger`, para descartar o quitar.
+- **primary**: a single main action per screen (Empezar, Guardar, Listo).
+- **secondary**: `primary` border, an alternative action next to the main one.
+- **quiet**: utility actions inside cards (Agregar serie, Descanso).
+- **danger**: `danger` text only, to discard or remove.

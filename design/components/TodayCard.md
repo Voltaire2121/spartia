@@ -1,3 +1,3 @@
 # TodayCard
 
-Tarjeta del día actual: fecha en `overline`, rutina en `title`, metadatos y "Vista previa", botón primario a lo ancho y "Agregar actividad".
+Card for the current day: date in `overline`, routine in `title`, metadata and "Vista previa" (preview), full-width primary button and "Agregar actividad" (add activity).

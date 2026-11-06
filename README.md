@@ -1,38 +1,38 @@
 # Spartia
 
-App móvil para crear rutinas de gimnasio con superseries, asignarlas a la semana, registrarlas serie por serie y ver tus avances y PRs.
+A mobile app to build gym routines with supersets, plan them across the week, log them set by set, and track your progress and PRs.
 
-> 🚧 En construcción. El avance paso a paso está en [`docs/PLAN.md`](docs/PLAN.md).
+> 🚧 Work in progress. Step-by-step progress lives in [`docs/PLAN.md`](docs/PLAN.md).
 
 ## Stack
 
-| Capa | Tecnología |
+| Layer | Technology |
 |---|---|
-| App móvil | React Native CLI + TypeScript (iOS primero) |
-| Navegación y datos | React Navigation, TanStack Query |
+| Mobile app | React Native CLI + TypeScript (iOS first) |
+| Navigation & data | React Navigation, TanStack Query |
 | API | Node 22, Express, TypeScript, Zod |
-| Base de datos | PostgreSQL 16 (Docker en local), Prisma |
+| Database | PostgreSQL 16 (Docker locally), Prisma |
 | Tests | Vitest + Supertest (API), Jest + React Native Testing Library (app) |
-| Calidad | ESLint, Prettier, `strict: true` |
+| Quality | ESLint, Prettier, `strict: true` |
 
-## Estructura
+## Structure
 
 ```
 spartia/
 ├── apps/
 │   ├── api/       # Node + Express + PostgreSQL
 │   └── mobile/    # React Native CLI
-├── design/        # Sistema de diseño: pantallas, componentes y tokens
+├── design/        # Design system: screens, components and tokens
 └── docs/
-    ├── PLAN.md        # Roadmap oficial
-    ├── decisiones/    # Registros de decisiones de arquitectura (ADR)
-    └── guia/          # Notas de aprendizaje paso a paso
+    ├── PLAN.md        # Official roadmap
+    ├── decisions/     # Architecture Decision Records (ADR)
+    └── guide/         # Step-by-step learning notes
 ```
 
-## Datos de ejercicios
+## Exercise data
 
-El catálogo inicial se importa desde [free-exercise-db](https://github.com/yuhonas/free-exercise-db) (licencia Unlicense). Solo se copian los textos, no las imágenes, porque su origen no está claro. Los detalles están en el [ADR 0001](docs/decisiones/0001-fuente-de-ejercicios.md).
+The initial catalog is imported from [free-exercise-db](https://github.com/yuhonas/free-exercise-db) (Unlicense). Only the text is copied, not the images, because their origin is unclear. Details in [ADR 0001](docs/decisions/0001-exercise-data-source.md).
 
-## Cómo correrlo
+## Getting started
 
-Pendiente: se completa a medida que avanza el [plan](docs/PLAN.md).
+Coming soon: this section grows as the [plan](docs/PLAN.md) moves forward.

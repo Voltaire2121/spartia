@@ -1,7 +1,7 @@
 # RoutinesScreen
 
-Pestaña **Rutinas**: biblioteca de rutinas del usuario agrupadas por plan, con búsqueda y filtros por tipo (empuje, tirón, pierna).
+**Rutinas** (routines) tab: the user's routine library grouped by plan, with search and filters by type (push, pull, legs).
 
-- Cada tarjeta muestra figura de músculo principal, músculos, número de ejercicios, superseries y duración estimada.
-- `+ Nueva rutina` abre **RoutineBuilderEmpty**.
-- ⋮ por rutina: editar, duplicar, asignar a un día, eliminar.
+- Each card shows the main muscle figure, muscles, number of exercises, supersets and estimated duration.
+- `+ Nueva rutina` (new routine) opens **RoutineBuilderEmpty**.
+- ⋮ per routine: edit, duplicate, assign to a day, delete.

@@ -1,7 +1,7 @@
 # RoutineBuilder
 
-Rutina **construida**: músculos objetivo con porcentaje de volumen, lista de ejercicios reordenable (asa ⠿) y superseries.
+A **built** routine: target muscles with volume percentage, reorderable exercise list (⠿ handle) and supersets.
 
-- Una superserie agrupa 2+ ejercicios en un contenedor con borde `primary-line`, letras A/B/C en `primary`.
-- Cada fila muestra series · rango de reps · descanso. ⋮ abre **ExerciseSettingsSheet**.
-- `Deshacer` revierte el último cambio. CTA fijo: Ver calentamiento / Guardar rutina.
+- A superset groups 2+ exercises in a container with a `primary-line` border, letters A/B/C in `primary`.
+- Each row shows sets · rep range · rest. ⋮ opens **ExerciseSettingsSheet**.
+- `Deshacer` (undo) reverts the last change. Fixed CTA: Ver calentamiento (see warm-up) / Guardar rutina (save routine).

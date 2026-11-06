@@ -1,7 +1,7 @@
 # ExercisePickerSheet
 
-Hoja inferior para **elegir ejercicios** de la base de datos (licenciada, con imágenes/video).
+Bottom sheet to **pick exercises** from the database (licensed, with images/video).
 
-- Búsqueda + control segmentado (Todos / Músculo / Equipo) + chips de grupo muscular.
-- Selección múltiple: fila seleccionada en `primary-soft` con borde `primary`; el botón inferior cuenta los seleccionados.
-- Las miniaturas son marcadores: en producción van las imágenes del proveedor de ejercicios.
+- Search + segmented control (Todos / Músculo / Equipo — All / Muscle / Equipment) + muscle group chips.
+- Multi-select: selected row in `primary-soft` with a `primary` border; the bottom button counts the selected items.
+- Thumbnails are placeholders: in production they show the exercise provider's images.

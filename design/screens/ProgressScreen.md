@@ -1,7 +1,7 @@
 # ProgressScreen
 
-Pestaña **Progreso**: el track de la semana.
+**Progreso** (progress) tab: the week's track.
 
-- Puntos por día (completado / perdido / descanso / hoy / pendiente).
-- Totales de la semana y PRs, volumen semanal en barras (semana actual en `primary`).
-- Historial de sesiones de la semana con sus PRs; cada fila abre el resumen de esa sesión.
+- Dots per day (completed / missed / rest / today / pending).
+- Week totals and PRs, weekly volume as bars (current week in `primary`).
+- The week's session history with their PRs; each row opens that session's summary.

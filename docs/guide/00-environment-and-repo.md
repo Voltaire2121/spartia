@@ -1,44 +1,44 @@
-# 00 · Entorno, repositorio y decisiones
+# 00 · Environment, repository and decisions
 
-## Objetivo
+## Goal
 
-Dejar la Mac lista para desarrollar el API y la app de iOS, crear el repositorio con su plan oficial y decidir de dónde salen los datos de ejercicios.
+Get the Mac ready to build the API and the iOS app, create the repository with its official plan, and decide where the exercise data comes from.
 
-## Qué se hizo
+## What we did
 
-- Revisamos versiones: Xcode 26.6, CocoaPods, Git y Homebrew ya estaban instalados.
-- Instalamos **Node 22** con **fnm**, **Watchman** y **Docker sobre Colima**.
-- Borramos el runtime del simulador iOS 26.5 (sin dispositivos), conservando el iPhone 16 con iOS 18.6. Liberamos unos 11 GB.
-- `git init -b main`, `.gitignore`, `README.md` y `docs/PLAN.md`.
-- Investigamos la licencia de free-exercise-db y registramos la decisión en `docs/decisiones/0001-fuente-de-ejercicios.md`.
+- Checked versions: Xcode 26.6, CocoaPods, Git and Homebrew were already installed.
+- Installed **Node 22** with **fnm**, **Watchman**, and **Docker on Colima**.
+- Removed the iOS 26.5 simulator runtime (it had no devices) and kept the iPhone 16 on iOS 18.6, freeing about 11 GB.
+- `git init -b main`, `.gitignore`, `README.md` and `docs/PLAN.md`.
+- Researched the free-exercise-db license and recorded the decision in `docs/decisions/0001-exercise-data-source.md`.
 
-## Conceptos clave
+## Key concepts
 
-- **Gestor de versiones de Node (fnm):** permite tener varias versiones de Node y elegir cuál usar por proyecto. Es como tener varias versiones de una dependencia en distintos `package.json`, pero para el runtime. `fnm` modifica el `PATH` al abrir la terminal, así que **una terminal abierta antes de instalarlo sigue usando el Node viejo**.
-- **PATH:** la lista ordenada de carpetas donde la terminal busca los comandos. Gana la primera que contenga el comando (`which -a node` las muestra todas).
-- **Docker y Colima:** Docker corre contenedores Linux; en macOS hace falta una máquina virtual. Colima es esa máquina virtual, más liviana que Docker Desktop. Un contenedor es como un `node_modules` de servicios: Postgres se levanta igual en cualquier computadora.
-- **Watchman:** observa cambios en archivos. Metro (el bundler de React Native, el equivalente de Vite) lo usa para recargar rápido.
-- **ADR (Architecture Decision Record):** un documento corto con contexto, decisión y consecuencias. Explica el *por qué* de una decisión para tu yo del futuro y para quien lea el repo.
+- **Node version manager (fnm):** lets you install several Node versions and pick one per project. Think of it as pinning a dependency version in `package.json`, but for the runtime. fnm edits the `PATH` when a terminal opens, so **a terminal opened before installing it keeps using the old Node**.
+- **PATH:** the ordered list of folders where the terminal looks for commands. The first folder that has the command wins (`which -a node` lists them all).
+- **Docker and Colima:** Docker runs Linux containers, and macOS needs a virtual machine for that. Colima is that VM, lighter than Docker Desktop. A container is like a `node_modules` for services: Postgres starts the same way on any computer.
+- **Watchman:** watches for file changes. Metro (React Native's bundler, the Vite equivalent) uses it to reload fast.
+- **ADR (Architecture Decision Record):** a short document with context, decision and consequences. It explains the *why* behind a decision to your future self and to anyone reading the repo.
 
-## Comandos
+## Commands
 
 ```bash
-fnm install 22 && fnm default 22   # instalar y fijar Node 22
-which -a node                       # ver qué binarios de node hay en el PATH
-colima start --cpu 2 --memory 2     # encender Docker
-colima stop                         # apagarlo y liberar RAM
-docker run --rm hello-world         # comprobar Docker
-xcrun simctl runtime list           # runtimes de simulador y su tamaño
+fnm install 22 && fnm default 22   # install Node 22 and make it the default
+which -a node                       # list every node binary in the PATH
+colima start --cpu 2 --memory 2     # start Docker
+colima stop                         # stop it and free RAM
+docker run --rm hello-world         # check Docker works
+xcrun simctl runtime list           # simulator runtimes and their size
 ```
 
-## Errores comunes
+## Common errors
 
-- **`node -v` sigue mostrando la versión vieja:** cierra la terminal y abre una nueva (o reinicia VS Code con `Cmd+Q`).
-- **`Cannot connect to the Docker daemon`:** Colima está apagado. Corre `colima start`.
-- **Disco lleno al compilar iOS:** borra DerivedData (`~/Library/Developer/Xcode/DerivedData`) y los runtimes de simulador que no uses.
+- **`node -v` still shows the old version:** close the terminal and open a new one (or quit VS Code with `Cmd+Q`).
+- **`Cannot connect to the Docker daemon`:** Colima is off. Run `colima start`.
+- **Disk full while building iOS:** delete DerivedData (`~/Library/Developer/Xcode/DerivedData`) and any simulator runtimes you don't use.
 
-## 🧠 Reto
+## 🧠 Challenge
 
-Tienes dos Node instalados: el del instalador oficial en `/usr/local/bin/node` (v20) y el de fnm (v22).
-1. ¿Por qué gana el de fnm? Explícalo mirando la salida de `echo $PATH | tr ":" "\n"`.
-2. Investiga cómo desinstalar el Node 20 del instalador oficial sin romper fnm. *(Pista: el .pkg no trae desinstalador; busca qué archivos dejó en `/usr/local`.)*
+You have two Node installs: the official installer one at `/usr/local/bin/node` (v20) and the fnm one (v22).
+1. Why does fnm's win? Explain it using the output of `echo $PATH | tr ":" "\n"`.
+2. Find out how to uninstall the official installer's Node 20 without breaking fnm. *(Hint: the .pkg has no uninstaller; look at what files it left in `/usr/local`.)*

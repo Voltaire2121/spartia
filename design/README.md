@@ -1,107 +1,107 @@
-# Sistema de diseño de Spartia
+# Spartia design system
 
-Esta carpeta es la **fuente de verdad visual** de la app. Se exportó del sistema de diseño de Spartia en Claude (artifact "Spartia Workout Tracker").
+This folder is the app's **visual source of truth**. It was exported from the Spartia design system in Claude (artifact "Spartia Workout Tracker").
 
-## Cómo usar esta carpeta (humanos y Claude Code)
+## How to use this folder (humans and Claude Code)
 
-- **Para saber cómo se ve una pantalla:** abre `screens/<Nombre>.png` (tema claro) y `screens/<Nombre>.dark.png` (oscuro). Claude Code puede leer las imágenes directamente.
-- **Para medidas exactas** (paddings, radios, tamaños de letra): lee `screens/<Nombre>.html` junto con `components.css`. El HTML es una **referencia de layout**, no código para copiar: en React Native se reimplementa con `View`/`Text`/`StyleSheet`.
-- **Para el comportamiento de una pantalla:** lee `screens/<Nombre>.md`.
-- **Colores, tipografía, espaciado y radios:** `tokens.json` es la fuente de verdad. En la app se convierte a `apps/mobile/src/theme/tokens.ts`. Nunca escribas un color hex a mano en un componente: usa siempre un token.
-- `tokens.css` se generó desde `tokens.json` y sirve solo para que los HTML se vean en el navegador.
+- **To see what a screen looks like:** open `screens/<Name>.png` (light theme) and `screens/<Name>.dark.png` (dark). Claude Code can read the images directly.
+- **For exact measurements** (padding, radii, font sizes): read `screens/<Name>.html` together with `components.css`. The HTML is a **layout reference**, not code to copy: in React Native it's rebuilt with `View`/`Text`/`StyleSheet`.
+- **For a screen's behavior:** read `screens/<Name>.md`.
+- **Colors, typography, spacing and radii:** `tokens.json` is the source of truth. In the app it becomes `apps/mobile/src/theme/tokens.ts`. Never hard-code a hex color in a component: always use a token.
+- `tokens.css` was generated from `tokens.json` and only exists so the HTML files render in the browser.
 
-### Equivalencias CSS → React Native
+### CSS → React Native equivalents
 
-| En el HTML/CSS | En React Native |
+| In the HTML/CSS | In React Native |
 |---|---|
-| `var(--primary)`, `var(--space-4)`… | `theme.colors.primary`, `theme.space[4]`… desde `src/theme` |
-| `.title`, `.body`, `.overline`… (estilos de texto) | `<AppText variant="title">` |
+| `var(--primary)`, `var(--space-4)`… | `theme.colors.primary`, `theme.space[4]`… from `src/theme` |
+| `.title`, `.body`, `.overline`… (text styles) | `<AppText variant="title">` |
 | `.sp-btn.primary / secondary / quiet / danger` | `<Button variant="primary">` |
-| `.sp-sheet` + `.sp-scrim` | Hoja inferior (`@gorhom/bottom-sheet` o `Modal`) |
-| `.sp-tabbar` | Bottom tabs de React Navigation |
+| `.sp-sheet` + `.sp-scrim` | Bottom sheet (`@gorhom/bottom-sheet` or `Modal`) |
+| `.sp-tabbar` | React Navigation bottom tabs |
 | `.sp-ex` | `<ExerciseRow>` |
 | `.sp-sets` | `<SetTable>` |
-| `box-shadow` | `shadow*` en iOS / `elevation` en Android |
+| `box-shadow` | `shadow*` on iOS / `elevation` on Android |
 | `font-variant-numeric: tabular-nums` | `fontVariant: ['tabular-nums']` |
-| Tema oscuro `[data-theme="dark"]` | `useColorScheme()` + tokens del tema `dark` |
+| Dark theme `[data-theme="dark"]` | `useColorScheme()` + `dark` theme tokens |
 
-Las miniaturas grises con mancuerna son marcadores de posición: en la app van las imágenes reales de cada ejercicio.
+The gray thumbnails with a dumbbell are placeholders: the app shows each exercise's real image (once licensed images exist; see `docs/decisions/0001-exercise-data-source.md`).
 
-## Índice de pantallas
+## Screen index
 
-| Paso del flujo | Pantalla | Archivos |
+| Flow step | Screen | Files |
 |---|---|---|
-| 1 · Rutinas | Biblioteca de rutinas | `screens/RoutinesScreen.*` |
-| 1 · Rutinas | Crear rutina (vacía) | `screens/RoutineBuilderEmpty.*` |
-| 1 · Rutinas | Selector de ejercicios (hoja) | `screens/ExercisePickerSheet.*` |
-| 1 · Rutinas | Rutina armada con superserie | `screens/RoutineBuilder.*` |
-| 1 · Rutinas | Ajustes de ejercicio (hoja) | `screens/ExerciseSettingsSheet.*` |
-| 2 · Semana | Semana (inicio) | `screens/WeekScreen.*` |
-| 2 · Semana | Menú del día | `screens/DayMenuSheet.*` |
-| 2 · Semana | Asignar rutina a un día (hoja) | `screens/AssignRoutineSheet.*` |
-| 3 · Entrenar | Entrenamiento activo | `screens/ActiveWorkout.*` |
-| 3 · Entrenar | Temporizador de descanso | `screens/RestTimer.*` |
-| 3 · Entrenar | Confirmar fin | `screens/FinishSheet.*` |
-| 4 · Resultados | Resumen post-entrenamiento | `screens/WorkoutSummary.*` |
-| 4 · Resultados | Progreso semanal | `screens/ProgressScreen.*` |
+| 1 · Routines | Routine library | `screens/RoutinesScreen.*` |
+| 1 · Routines | Create routine (empty) | `screens/RoutineBuilderEmpty.*` |
+| 1 · Routines | Exercise picker (sheet) | `screens/ExercisePickerSheet.*` |
+| 1 · Routines | Routine with a superset | `screens/RoutineBuilder.*` |
+| 1 · Routines | Exercise settings (sheet) | `screens/ExerciseSettingsSheet.*` |
+| 2 · Week | Week (home) | `screens/WeekScreen.*` |
+| 2 · Week | Day menu | `screens/DayMenuSheet.*` |
+| 2 · Week | Assign routine to a day (sheet) | `screens/AssignRoutineSheet.*` |
+| 3 · Train | Active workout | `screens/ActiveWorkout.*` |
+| 3 · Train | Rest timer | `screens/RestTimer.*` |
+| 3 · Train | Confirm finish | `screens/FinishSheet.*` |
+| 4 · Results | Post-workout summary | `screens/WorkoutSummary.*` |
+| 4 · Results | Weekly progress | `screens/ProgressScreen.*` |
 
-## Componentes
+## Components
 
-`components/Button`, `DayCard`, `TodayCard`, `ExerciseRow`, `SetTable`, `Badges`, `TabBar` (`.png`, `.html`, `.md` cada uno).
+`components/Button`, `DayCard`, `TodayCard`, `ExerciseRow`, `SetTable`, `Badges`, `TabBar` (`.png`, `.html`, `.md` each).
 
 ---
 
-# Guía de marca
+# Brand guide
 
-Spartia es una app móvil para crear tus rutinas, ponerlas en los días de la semana, ejecutarlas serie por serie y ver qué avanzaste y qué PRs lograste. El lenguaje visual es deliberadamente limpio y "de gimnasio serio": fondo gris claro, tarjetas blancas, un solo azul de acción, y colores de estado (rojo, verde, dorado) que significan una sola cosa cada uno.
+Spartia is a mobile app to create your routines, place them on the days of the week, run them set by set, and see how you progressed and which PRs you hit. The visual language is deliberately clean and "serious gym": light gray background, white cards, a single blue for actions, and status colors (red, green, gold) that each mean exactly one thing.
 
-> Este sistema es la primera versión del MVP, construida a partir de pantallazos de una app de referencia. No hay logo todavía: el nombre se escribe en Inter ExtraBold. Las miniaturas de ejercicio son marcadores hasta conectar la base de datos de ejercicios licenciada.
+> This system is the first version of the MVP, built from screenshots of a reference app. There's no logo yet: the name is set in Inter ExtraBold. Exercise thumbnails are placeholders until a licensed exercise database is connected.
 
-## El flujo del MVP
+## The MVP flow
 
-| Paso | Qué hace el usuario | Pantallas (Componentes) |
+| Step | What the user does | Screens (Components) |
 |---|---|---|
-| **1 · Rutinas** | Crea una rutina, busca y agrega ejercicios, define series / reps / descanso y arma superseries | `RoutinesScreen` → `RoutineBuilderEmpty` → `ExercisePickerSheet` → `RoutineBuilder` → `ExerciseSettingsSheet` |
-| **2 · Semana** | Pone cada rutina en un día, reordena días, marca descansos | `WeekScreen` → `DayMenuSheet` → `AssignRoutineSheet` |
-| **3 · Entrenar** | Toca *Empezar entrenamiento*, registra KG y REPS viendo lo de la vez anterior, descansa con temporizador, termina | `ActiveWorkout` → `RestTimer` → `FinishSheet` |
-| **4 · Resultados** | Ve el resumen con PRs y progreso vs. la última vez; revisa la semana completa | `WorkoutSummary` → `ProgressScreen` |
+| **1 · Routines** | Creates a routine, searches and adds exercises, sets sets / reps / rest and builds supersets | `RoutinesScreen` → `RoutineBuilderEmpty` → `ExercisePickerSheet` → `RoutineBuilder` → `ExerciseSettingsSheet` |
+| **2 · Week** | Puts each routine on a day, reorders days, marks rest days | `WeekScreen` → `DayMenuSheet` → `AssignRoutineSheet` |
+| **3 · Train** | Taps *Empezar entrenamiento*, logs KG and REPS seeing last time's numbers, rests with a timer, finishes | `ActiveWorkout` → `RestTimer` → `FinishSheet` |
+| **4 · Results** | Sees the summary with PRs and progress vs. last time; reviews the full week | `WorkoutSummary` → `ProgressScreen` |
 
-Navegación: barra inferior con **Semana · Rutinas · Progreso · Perfil**. *Semana* es la pantalla de inicio.
+Navigation: bottom bar with **Semana · Rutinas · Progreso · Perfil** (Week · Routines · Progress · Profile). *Semana* is the home screen.
 
-### Reglas del registro de series
+### Set logging rules
 
-- **ANTERIOR** muestra el mejor dato de la sesión pasada para esa serie (`77 × 15`). Un punto `pr` al lado indica que ese valor fue un récord.
-- KG y REPS se pre-llenan con lo anterior en gris (`ink-placeholder`); el usuario confirma o edita. La celda en edición lleva contorno `primary`.
-- Una flecha ▲ (`primary-text`) sugiere progresar: más reps si aún no llega al tope del rango, o más peso si ya lo alcanzó.
-- Marcar ✓ pinta la fila en `success-soft` y arranca el descanso configurado del ejercicio.
-- En una superserie las series se intercalan 1A, 1B, 2A, 2B…; el descanso arranca tras la serie B.
+- **ANTERIOR** (previous) shows the best result from last session for that set (`77 × 15`). A `pr` dot next to it means that value was a record.
+- KG and REPS are prefilled with the previous values in gray (`ink-placeholder`); the user confirms or edits. The cell being edited has a `primary` outline.
+- An ▲ arrow (`primary-text`) suggests progressing: more reps if the top of the range hasn't been reached yet, or more weight if it has.
+- Tapping ✓ paints the row `success-soft` and starts the exercise's configured rest.
+- In a superset, sets alternate 1A, 1B, 2A, 2B…; rest starts after set B.
 
-### Qué cuenta como PR
+### What counts as a PR
 
-- **Peso máximo** levantado en un ejercicio.
-- **1RM estimado** (Epley: peso × (1 + reps / 30)).
-- **Más reps** con un mismo peso.
-- **Volumen** de sesión (Σ kg × reps) se compara con la última vez pero no es un PR.
+- **Max weight** lifted on an exercise.
+- **Estimated 1RM** (Epley: weight × (1 + reps / 30)).
+- **Most reps** at the same weight.
+- Session **volume** (Σ kg × reps) is compared with last time but is not a PR.
 
-## Fundamentos visuales
+## Visual foundations
 
-**Color.** Gris `bg-app` de fondo y `bg-surface` en tarjetas, separadas por un borde `line` de 1px y una sombra mínima (`shadow-card`); en oscuro, solo el borde. Un único color de acción, `primary`: el botón principal, la tarjeta de HOY, la pestaña activa. Los estados no se mezclan:
+**Color.** `bg-app` gray background and `bg-surface` for cards, separated by a 1px `line` border and a minimal shadow (`shadow-card`); in dark mode, only the border. A single action color, `primary`: the main button, the TODAY card, the active tab. Status colors never mix:
 
-- `danger` = día **Perdido** o acción destructiva.
-- `success` = serie o día **Completado**, delta positivo.
-- `pr` / `pr-soft` / `pr-ink` = **récord personal**. El dorado nunca va como texto sobre blanco: usa `pr-ink` sobre `pr-soft`.
-- `primary-soft` = información y selección (banner, chip SUPERSERIE, fila seleccionada).
+- `danger` = **Missed** day or destructive action.
+- `success` = **Completed** set or day, positive delta.
+- `pr` / `pr-soft` / `pr-ink` = **personal record**. Gold is never used as text on white: use `pr-ink` on `pr-soft`.
+- `primary-soft` = information and selection (banner, SUPERSET chip, selected row).
 
-**Tipografía.** Inter en todo. Títulos en ExtraBold (`title`, `section`) con tracking negativo; listas en `headline` (600); metadatos en `body`/`caption` con `ink-muted`; días y cabeceras de tabla en `overline` mayúsculas. Todo número de KG/REPS/tiempo usa `numeric` con cifras tabulares para que las columnas no bailen.
+**Typography.** Inter everywhere. Titles in ExtraBold (`title`, `section`) with negative tracking; lists in `headline` (600); metadata in `body`/`caption` with `ink-muted`; days and table headers in uppercase `overline`. Every KG/REPS/time number uses `numeric` with tabular figures so columns don't jump.
 
-**Forma.** Las acciones son píldoras (`radius-pill`); las tarjetas usan `radius-md` (filas) y `radius-lg` (tarjetas grandes, superseries); las hojas inferiores `radius-xl` arriba. Margen lateral de pantalla `space-4`, gap entre filas `space-2`.
+**Shape.** Actions are pills (`radius-pill`); cards use `radius-md` (rows) and `radius-lg` (large cards, supersets); bottom sheets use `radius-xl` on top. Screen side margin `space-4`, gap between rows `space-2`.
 
-**Hojas inferiores.** Todo lo que agrega o elige algo (rutina, ejercicio, ajustes) aparece como hoja inferior sobre `scrim`, con asa, título en `section` y un botón primario al fondo que nombra la acción ("Asignar al jueves", "Agregar 2 ejercicios").
+**Bottom sheets.** Anything that adds or picks something (routine, exercise, settings) appears as a bottom sheet over a `scrim`, with a handle, a `section` title and a primary button at the bottom that names the action ("Asignar al jueves", "Agregar 2 ejercicios").
 
-## Iconografía
+## Iconography
 
-Íconos de trazo, 24px de grilla, trazo 1.8, extremos redondeados, en `currentColor` (en la app: Lucide o similar con el mismo trazo). Los estados usan ícono en caja de 36px con su color suave: mancuerna para entrenamiento, figura para descanso, check para completado. Las figuras anatómicas resaltan el músculo objetivo en `muscle`.
+Stroke icons, 24px grid, 1.8 stroke, rounded caps, in `currentColor` (in the app: Lucide or similar with the same stroke). States use an icon in a 36px box with its soft color: dumbbell for workout, figure for rest, check for completed. Anatomical figures highlight the target muscle in `muscle`.
 
-## Voz
+## Voice (app copy, in Spanish)
 
-Español neutro, de tú, corto y directo: "Empezar entrenamiento", "Agregar serie", "¡Entrenamiento completado!". Números siempre con unidad (`48 min`, `82 kg`, `+2 reps`). Celebra los PRs, no regaña los días perdidos: el rojo informa, el texto no culpa.
+Neutral Spanish, informal "tú", short and direct: "Empezar entrenamiento", "Agregar serie", "¡Entrenamiento completado!". Numbers always with units (`48 min`, `82 kg`, `+2 reps`). Celebrate PRs, don't scold missed days: red informs, the text doesn't blame.

@@ -1,8 +1,8 @@
 # WeekScreen
 
-Pestaña **Semana** (pantalla principal). Calco del patrón de la app de referencia.
+**Semana** (week) tab, the main screen. Follows the reference app's pattern.
 
-- Cabecera de plan (nivel · objetivo, nombre del plan) y banner de resumen semanal.
-- Una fila por día: **Perdido** (`danger`), **Completado** (`success`, con duración), **Descanso**, **Planificado** (`primary-soft`).
-- **HOY** es una tarjeta grande con borde `primary-line`, nombre en estilo `title`, "Vista previa" y el botón `Empezar entrenamiento`.
-- ⋮ abre **DayMenuSheet**.
+- Plan header (level · goal, plan name) and a weekly summary banner.
+- One row per day: **Perdido** (missed, `danger`), **Completado** (completed, `success`, with duration), **Descanso** (rest), **Planificado** (planned, `primary-soft`).
+- **HOY** (today) is a large card with a `primary-line` border, name in `title` style, "Vista previa" (preview) and the `Empezar entrenamiento` (start workout) button.
+- ⋮ opens **DayMenuSheet**.

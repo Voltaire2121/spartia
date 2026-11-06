@@ -1,3 +1,3 @@
 # DayCard
 
-Fila de un día de la semana con su estado: missed, done, rest, planned. Etiqueta de día en `overline`, ícono de 36px en caja de `radius-sm`.
+A weekday row with its status: missed, done, rest, planned. Day label in `overline`, 36px icon in a `radius-sm` box.

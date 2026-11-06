@@ -1,3 +1,3 @@
 # ExerciseRow
 
-Fila de ejercicio en sus tres usos: en una rutina (⋮), seleccionado en el selector (radio), y dentro de un grupo de superserie (letras A/B).
+Exercise row in its three uses: inside a routine (⋮), selected in the picker (radio), and inside a superset group (A/B letters).

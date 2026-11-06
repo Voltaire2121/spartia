@@ -1,8 +1,8 @@
 # WorkoutSummary
 
-Pantalla de **resumen post-entrenamiento**.
+**Post-workout summary** screen.
 
-- Medalla y titular `display`.
-- 4 estadísticas: duración, volumen (kg × reps), series, PRs (tarjeta `pr-soft`).
-- **Récords personales**: tipo de PR (Peso máx., 1RM estimado, Más reps a un peso) con el delta.
-- **Comparado con la última vez**: mejor serie por ejercicio y delta (`success` si sube, `ink-muted` si igual).
+- Medal and `display` headline.
+- 4 stats: duration, volume (kg × reps), sets, PRs (`pr-soft` card).
+- **Récords personales** (personal records): PR type (max weight, estimated 1RM, most reps at a weight) with the delta.
+- **Comparado con la última vez** (compared with last time): best set per exercise and delta (`success` if up, `ink-muted` if equal).

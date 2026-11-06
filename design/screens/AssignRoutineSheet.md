@@ -1,3 +1,3 @@
 # AssignRoutineSheet
 
-Hoja **Agregar rutina** a un día: buscador, grupo del plan activo (expandido) y "Mis rutinas guardadas" (colapsado). Radio de selección única; `+ Nueva` crea una rutina sin salir del flujo.
+**Agregar rutina** (add routine) sheet for a day: search, active plan group (expanded) and "Mis rutinas guardadas" (my saved routines, collapsed). Single-select radio; `+ Nueva` creates a routine without leaving the flow.

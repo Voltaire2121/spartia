@@ -1,53 +1,53 @@
-# 02 · `app.ts` + `server.ts` y variables de entorno con Zod
+# 02 · `app.ts` + `server.ts` and environment variables with Zod
 
-## Objetivo
+## Goal
 
-Separar la configuración de la app de su arranque y sacar el puerto del código, leyéndolo de variables de entorno validadas con Zod.
+Separate configuring the app from starting it, and move the port out of the code by reading it from environment variables validated with Zod.
 
-## Qué se hizo
+## What we did
 
-- `src/app.ts`: crea y **exporta** la app de Express con sus rutas. **Sin `listen`.**
-- `src/server.ts`: importa `app` y `env` y hace `listen(env.PORT)`.
-- `src/config/env.ts`: esquema de Zod para `NODE_ENV` y `PORT`, validación con `safeParse` y `process.exit(1)` si algo falla.
-- `.env.example` (se sube a git) y `.env` (no se sube).
-- Scripts `dev` y `start` con `--env-file-if-exists=.env`, que viene integrado en Node 22, sin `dotenv`.
+- `src/app.ts`: creates and **exports** the Express app with its routes. **No `listen`.**
+- `src/server.ts`: imports `app` and `env` and calls `listen(env.PORT)`.
+- `src/config/env.ts`: Zod schema for `NODE_ENV` and `PORT`, validated with `safeParse`, and `process.exit(1)` if anything is wrong.
+- `.env.example` (committed) and `.env` (not committed).
+- `dev` and `start` scripts use `--env-file-if-exists=.env`, which is built into Node 22, so there's no need for `dotenv`.
 
 ```
 src/
-├── app.ts          ← QUÉ hace la app (rutas)   ~ App.tsx
-├── server.ts       ← la ENCIENDE (listen)      ~ main.tsx
-└── config/env.ts   ← configuración validada
+├── app.ts          ← WHAT the app does (routes)  ~ App.tsx
+├── server.ts       ← TURNS IT ON (listen)        ~ main.tsx
+└── config/env.ts   ← validated configuration
 ```
 
-## Conceptos clave
+## Key concepts
 
-- **Por qué separar `app` de `server`:** los tests (paso 1.12) importarán `app` y le harán requests con Supertest **sin abrir un puerto**. Si `listen` estuviera en el mismo archivo, cada test levantaría un servidor real.
-- **Variables de entorno:** configuración que cambia según dónde corre la app, sin tocar el código. Son como `import.meta.env.VITE_*` en Vite. En Node viven en `process.env` y **siempre son `string | undefined`**.
-- **Zod vs tipos de TS:** los tipos desaparecen al compilar; Zod **revisa datos reales en ejecución**. Por eso `zod` va en `dependencies`.
-- **`z.coerce.number()`:** convierte `"3000"` → `3000` antes de validar. `"abc"` → `NaN` → error.
-- **`safeParse` vs `parse`:** `parse` lanza una excepción; `safeParse` devuelve `{ success, data | error }` y tú decides qué hacer.
-- **Tipos inferidos:** `env` tiene tipo `{ NODE_ENV: …; PORT: number }` sin escribir ninguna `interface`. Si necesitas el tipo con nombre: `z.infer<typeof envSchema>`.
-- **Fail fast:** si la configuración es inválida, el servidor no arranca y dice por qué. `process.exit(1)` termina el proceso con código de error (0 = bien, distinto de 0 = falló).
-- **Prioridad:** una variable definida en la terminal (`PORT=4000 npm run dev`) gana sobre la del `.env`.
-- **`.env.example`:** documenta *todas* las variables, con valores de desarrollo seguros. Nunca lleva secretos reales.
+- **Why split `app` from `server`:** tests (step 1.12) will import `app` and send requests with Supertest **without opening a port**. If `listen` lived in the same file, every test would start a real server.
+- **Environment variables:** configuration that changes depending on where the app runs, without touching the code. Like `import.meta.env.VITE_*` in Vite. In Node they live in `process.env` and are **always `string | undefined`**.
+- **Zod vs TS types:** types disappear when compiling; Zod **checks real data at runtime**. That's why `zod` goes in `dependencies`.
+- **`z.coerce.number()`:** turns `"3000"` → `3000` before validating. `"abc"` → `NaN` → error.
+- **`safeParse` vs `parse`:** `parse` throws; `safeParse` returns `{ success, data | error }` and you decide what to do.
+- **Inferred types:** `env` is typed `{ NODE_ENV: …; PORT: number }` without writing any `interface`. If you need the type by name: `z.infer<typeof envSchema>`.
+- **Fail fast:** if the config is invalid, the server doesn't start and says why. `process.exit(1)` ends the process with an error code (0 = ok, anything else = failed).
+- **Precedence:** a variable set in the terminal (`PORT=4000 npm run dev`) wins over the one in `.env`.
+- **`.env.example`:** documents *every* variable with safe development values. Never real secrets.
 
-## Comandos
+## Commands
 
 ```bash
-npm run dev                  # arranca con el .env
-PORT=4000 npm run dev        # sobrescribe una variable solo para esta ejecución
+npm run dev                  # starts with .env
+PORT=4000 npm run dev        # override a variable for this run only
 PORT=abc npm run dev         # fail fast: ❌ Invalid env variables … → at PORT
-echo $?                      # código de salida del último comando (1 = error)
+echo $?                      # exit code of the last command (1 = error)
 ```
 
-## Errores comunes
+## Common errors
 
-- **`Relative import paths need explicit file extensions`:** en ESM falta el `.js` (`./app.js`, no `./app`).
-- **Escribí el código y no cambia nada:** el archivo no está guardado. Hay un punto ● en la pestaña. Activa *File → Auto Save*.
-- **Cambié el `.env` y no se aplica:** `tsx watch` solo vigila los archivos `.ts`. Reinicia con `Ctrl+C` y `npm run dev`.
+- **`Relative import paths need explicit file extensions`:** the `.js` is missing in an ESM import (`./app.js`, not `./app`).
+- **I wrote the code and nothing changes:** the file isn't saved. There's a ● dot on the tab. Turn on *File → Auto Save*.
+- **I changed `.env` and nothing happens:** `tsx watch` only watches `.ts` files. Restart with `Ctrl+C` and `npm run dev`.
 
-## 🧠 Reto
+## 🧠 Challenge
 
-1. Agrega a `env.ts` una variable `LOG_LEVEL` que solo acepte `"debug" | "info" | "warn" | "error"`, con default `"info"`. Agrégala también a `.env.example`.
-2. Prueba `LOG_LEVEL=verbose npm run dev`. ¿Qué mensaje te da Zod?
-3. Pregunta para pensar: ¿por qué **no** es buena idea leer `process.env.PORT` directamente en `server.ts` y validar ahí mismo? *(Pista: piensa qué pasa cuando haya 10 variables usadas en 8 archivos distintos.)*
+1. Add a `LOG_LEVEL` variable to `env.ts` that only accepts `"debug" | "info" | "warn" | "error"`, defaulting to `"info"`. Add it to `.env.example` too.
+2. Try `LOG_LEVEL=verbose npm run dev`. What message does Zod give you?
+3. Something to think about: why is it **not** a good idea to read `process.env.PORT` directly in `server.ts` and validate it right there? *(Hint: think about 10 variables used in 8 different files.)*

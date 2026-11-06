@@ -1,3 +1,3 @@
 # TabBar
 
-Barra inferior del MVP con 4 pestañas: Semana, Rutinas, Progreso, Perfil. La activa en `primary-text`.
+MVP bottom bar with 4 tabs: Semana, Rutinas, Progreso, Perfil (Week, Routines, Progress, Profile). The active one in `primary-text`.
