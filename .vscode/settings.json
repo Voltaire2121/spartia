@@ -1,0 +1,13 @@
+{
+  // Format with Prettier on save
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Let ESLint auto-fix what it can on save
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // The Node project lives in a subfolder: tell ESLint where to find its config
+  "eslint.workingDirectories": ["apps/api"]
+}
