@@ -1,6 +1,6 @@
 # Spartia official plan
 
-> **Current status:** Module 1, step 1.6 (`GET /api/v1/exercises`)
+> **Current status:** Module 1, step 1.7 (`GET /api/v1/exercises/:id` and central error handling)
 > **Last updated:** 2026-11-06
 
 This file is the project roadmap. Each step is small, verifiable and ends in a commit. When a step is done it gets a `[x]`, the short commit hash and a link to its guide note. Changes to the plan go in `docs(plan): ...` commits.
@@ -39,8 +39,8 @@ Goal: understand HTTP, Express, validation, pagination and layers without a data
 - [x] **1.2** First Express server with `GET /health`. ✅ `curl localhost:3000/health` → `{"status":"ok"}` (`a8b9c84` · [guide](guide/01-node-typescript-express.md))
 - [x] **1.3** Split `app.ts` from `server.ts`; `config/env.ts` with Zod (`PORT`). ✅ With an invalid `PORT` it refuses to start and explains why (`feed14a` · [guide](guide/02-app-server-env.md))
 - [x] **1.4** ESLint + Prettier + VS Code format on save. ✅ `npm run check` passes (`b88993b` · [guide](guide/03-eslint-prettier.md))
-- [x] **1.5** `src/scripts/download-exercises.ts`: downloads the JSON with `fetch`, validates it with Zod and saves 20 exercises to `src/data/exercises.sample.json`. ✅ The file exists with 20 exercises ([guide](guide/04-download-exercises.md))
-- [ ] **1.6** `GET /api/v1/exercises` returns the sample, with `imageUrls` built by the API. ✅ curl returns all 20
+- [x] **1.5** `src/scripts/download-exercises.ts`: downloads the JSON with `fetch`, validates it with Zod and saves 20 exercises to `src/data/exercises.sample.json`. ✅ The file exists with 20 exercises (`cb29fa0` · [guide](guide/04-download-exercises.md))
+- [x] **1.6** `GET /api/v1/exercises` returns the sample, with `imageUrls` built by the API. ✅ curl returns all 20 ([guide](guide/05-exercises-endpoint.md))
 - [ ] **1.7** `GET /api/v1/exercises/:id`, `AppError`, `notFound` and `errorHandler`. ✅ Unknown id → 404 `{ error: { code, message } }`
 - [ ] **1.8** `?search`, `?muscle`, `?equipment` filters reading `req.query` by hand. ✅ `?search=curl` filters
 - [ ] **1.9** Validation with Zod and a `validate(schema)` middleware. ✅ `?pageSize=abc` → 400

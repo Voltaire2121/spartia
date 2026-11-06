@@ -5,6 +5,11 @@ const envSchema = z.object({
     .enum(['development', 'test', 'production'])
     .default('development'),
   PORT: z.coerce.number().int().positive().default(3000),
+  IMAGE_BASE_URL: z
+    .url()
+    .default(
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/',
+    ),
 })
 
 const result = envSchema.safeParse(process.env)
