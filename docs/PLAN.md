@@ -1,6 +1,6 @@
 # Plan oficial de Spartia
 
-> **Estado actual:** Módulo 1, paso 1.3 (`app.ts`/`server.ts` y `env.ts` con Zod)
+> **Estado actual:** Módulo 1, paso 1.4 (ESLint + Prettier)
 > **Última actualización:** 2026-11-06
 
 Este archivo es el roadmap del proyecto. Cada paso es pequeño, se puede verificar y termina en un commit. Al cerrar un paso se marca con `[x]`, el hash corto del commit y el enlace a su nota de la guía. Los cambios al plan se hacen con commits `docs(plan): ...`.
@@ -36,7 +36,7 @@ Objetivo: entender HTTP, Express, validación, paginación y capas sin base de d
 
 - [x] **1.1** `apps/api`: `npm init`, TypeScript `strict` y `tsx`. `src/index.ts` imprime "hola". ✅ `npm run dev` imprime "hola" ([guía](guia/01-node-typescript-express.md))
 - [x] **1.2** Primer servidor Express con `GET /health`. ✅ `curl localhost:3000/health` → `{"status":"ok"}` ([guía](guia/01-node-typescript-express.md))
-- [ ] **1.3** Separar `app.ts` de `server.ts`; `config/env.ts` con Zod (`PORT`). ✅ Con un `PORT` inválido no arranca y explica por qué
+- [x] **1.3** Separar `app.ts` de `server.ts`; `config/env.ts` con Zod (`PORT`). ✅ Con un `PORT` inválido no arranca y explica por qué ([guía](guia/02-app-server-env.md))
 - [ ] **1.4** ESLint + Prettier. ✅ `npm run lint` pasa
 - [ ] **1.5** `scripts/download-exercises.ts`: descarga el JSON con `fetch` y guarda 20 ejercicios en `src/data/exercises.sample.json`. ✅ El archivo existe con 20 ejercicios
 - [ ] **1.6** `GET /api/v1/exercises` devuelve la muestra. ✅ curl devuelve los 20
