@@ -1,0 +1,47 @@
+# Dependencies
+node_modules/
+
+# Environment variables (commit only .env.example)
+.env
+.env.*
+!.env.example
+
+# Build output
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# React Native / Metro
+.metro-health-check*
+
+# iOS
+**/ios/Pods/
+**/ios/build/
+**/ios/vendor/
+*.xcuserstate
+xcuserdata/
+DerivedData/
+
+# Android (not built for now, but ignore its artifacts)
+**/android/.gradle/
+**/android/app/build/
+**/android/build/
+local.properties
+*.keystore
+!debug.keystore
+
+# Ruby (CocoaPods via Bundler)
+.bundle/
+vendor/bundle/

@@ -1,0 +1,80 @@
+/* Spartia — generado desde tokens.json. Fuente de verdad: tokens.json */
+:root, [data-theme="light"] {
+  --bg-app: #f4f5f7;
+  --bg-surface: #ffffff;
+  --bg-field: #f1f2f4;
+  --bg-row-alt: #f7f8fa;
+  --line: #e3e5e9;
+  --line-strong: #8c929e;
+  --scrim: rgba(17, 19, 24, 0.42);
+  --ink: #111318;
+  --ink-muted: #626876;
+  --ink-placeholder: #8c929e;
+  --primary: #1763e6;
+  --on-primary: #ffffff;
+  --primary-text: #1763e6;
+  --primary-soft: #eaf2ff;
+  --primary-line: #8fb6f7;
+  --danger: #c8261a;
+  --danger-soft: #fdecec;
+  --danger-line: #f3c3bf;
+  --success: #15803d;
+  --success-soft: #e9f8ef;
+  --pr: #e9a20f;
+  --pr-soft: #fff4dc;
+  --pr-ink: #8a5a00;
+  --muscle: #e5484d;
+  --shadow-card: 0 1px 2px rgba(17, 19, 24, 0.06);
+  --shadow-sheet: 0 -8px 32px rgba(17, 19, 24, 0.14);
+}
+[data-theme="dark"] {
+  --bg-app: #0b0d10;
+  --bg-surface: #15181d;
+  --bg-field: #1e2228;
+  --bg-row-alt: #1a1d22;
+  --line: #2a2f37;
+  --line-strong: #5d6470;
+  --scrim: rgba(0, 0, 0, 0.6);
+  --ink: #f3f4f6;
+  --ink-muted: #a3a9b4;
+  --ink-placeholder: #6f7682;
+  --primary: #1763e6;
+  --on-primary: #ffffff;
+  --primary-text: #79a8ff;
+  --primary-soft: #14223a;
+  --primary-line: #2f5aa8;
+  --danger: #ff7b70;
+  --danger-soft: #2a1514;
+  --danger-line: #5a2622;
+  --success: #5ad38a;
+  --success-soft: #12261a;
+  --pr: #ffc85a;
+  --pr-soft: #2a2210;
+  --pr-ink: #ffc85a;
+  --muscle: #ff6b70;
+  --shadow-card: none;
+  --shadow-sheet: 0 -8px 32px rgba(0, 0, 0, 0.5);
+}
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+  --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+.display { font-family: var(--font-sans); font-size: 28px; line-height: 34px; font-weight: 800; letter-spacing: -0.02em; }
+.title { font-family: var(--font-sans); font-size: 22px; line-height: 28px; font-weight: 800; letter-spacing: -0.01em; }
+.section { font-family: var(--font-sans); font-size: 19px; line-height: 24px; font-weight: 800; }
+.headline { font-family: var(--font-sans); font-size: 16px; line-height: 22px; font-weight: 600; }
+.body { font-family: var(--font-sans); font-size: 15px; line-height: 21px; font-weight: 400; }
+.label { font-family: var(--font-sans); font-size: 13px; line-height: 18px; font-weight: 600; }
+.caption { font-family: var(--font-sans); font-size: 12px; line-height: 16px; font-weight: 500; }
+.overline { font-family: var(--font-sans); font-size: 11px; line-height: 14px; font-weight: 700; letter-spacing: 0.06em; }
+.numeric { font-family: var(--font-sans); font-size: 16px; line-height: 20px; font-weight: 600; }
