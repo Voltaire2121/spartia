@@ -1,6 +1,6 @@
 # ADR 0001 · Exercise catalog source
 
-- **Status:** Accepted
+- **Status:** Accepted, **amended by [ADR 0002](0002-use-dataset-images-for-mvp.md)** (the dataset images are used during the MVP)
 - **Date:** 2026-11-06
 
 ## Context

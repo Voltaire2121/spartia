@@ -103,13 +103,13 @@ Conventions:
 
 ## Exercise data
 
-Full decision in `docs/decisions/0001-exercise-data-source.md`. **Our table is the source of truth**; the external dataset is only used for the initial load.
+Full decision in `docs/decisions/0001-exercise-data-source.md`, amended by `0002-use-dataset-images-for-mvp.md`. **Our table is the source of truth**; the external dataset is only used for the initial load.
 
 Source: **free-exercise-db** (github.com/yuhonas/free-exercise-db), about 876 exercises, **Unlicense**.
 - Full JSON: `https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/dist/exercises.json`
 - Fields: `id` (slug, e.g. `3_4_Sit-Up`), `name`, `force`, `level`, `mechanic`, `equipment`, `primaryMuscles[]`, `secondaryMuscles[]`, `instructions[]`, `category`, `images[]`.
 - `force`, `mechanic` and `equipment` can be `null`.
-- **Don't use the dataset images.** Their origin is unclear (the maintainer admits it in issue #2) and the app will be monetized. The API returns `imageUrls: []` and the app shows a placeholder. Licensed images will come later.
+- **Images: used during the MVP only** (ADR 0002). Store the relative paths (`images`, e.g. `3_4_Sit-Up/0.jpg`); the API builds `imageUrls` from a base URL (`https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/`). The app never builds image URLs. Their origin is unclear, so **they must be replaced with our own or licensed images before monetizing or publishing**.
 - The data is **copied into our database** with an idempotent script (`upsert` by `slug`), never queried live.
 - Store `slug` (the original `id`) and `source`: `"free-exercise-db"` for imported ones and `"spartia"` for ones we create (`POST`).
 

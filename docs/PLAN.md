@@ -7,7 +7,7 @@ This file is the project roadmap. Each step is small, verifiable and ends in a c
 
 ## Decisions
 
-1. **Exercise data: our own database.** Our table is the source of truth. Only **text** is imported from free-exercise-db; the images are not used (see the research below). Custom exercises can be created (`source = "spartia"`).
+1. **Exercise data: our own database.** Our table is the source of truth, seeded from free-exercise-db (see the research below). Custom exercises can be created (`source = "spartia"`). **The dataset images are used during the MVP only** ([ADR 0002](decisions/0002-use-dataset-images-for-mvp.md)) and must be replaced before monetizing.
 2. **Backend learning path:** in-memory array → PostgreSQL with hand-written SQL → Prisma.
 3. **Who writes what:** Cristian writes the backend (Claude guides and reviews); Claude writes the mobile app and explains what's new in React Native.
 4. **Platform:** iOS only for now (iPhone 16 simulator, iOS 18.6). Android is a future module.
@@ -39,8 +39,8 @@ Goal: understand HTTP, Express, validation, pagination and layers without a data
 - [x] **1.2** First Express server with `GET /health`. ✅ `curl localhost:3000/health` → `{"status":"ok"}` (`a8b9c84` · [guide](guide/01-node-typescript-express.md))
 - [x] **1.3** Split `app.ts` from `server.ts`; `config/env.ts` with Zod (`PORT`). ✅ With an invalid `PORT` it refuses to start and explains why (`feed14a` · [guide](guide/02-app-server-env.md))
 - [x] **1.4** ESLint + Prettier + VS Code format on save. ✅ `npm run check` passes ([guide](guide/03-eslint-prettier.md))
-- [ ] **1.5** `scripts/download-exercises.ts`: downloads the JSON with `fetch` and saves 20 exercises to `src/data/exercises.sample.json`. ✅ The file exists with 20 exercises
-- [ ] **1.6** `GET /api/v1/exercises` returns the sample. ✅ curl returns all 20
+- [ ] **1.5** `src/scripts/download-exercises.ts`: downloads the JSON with `fetch`, validates it with Zod and saves 20 exercises to `src/data/exercises.sample.json`. ✅ The file exists with 20 exercises
+- [ ] **1.6** `GET /api/v1/exercises` returns the sample, with `imageUrls` built by the API. ✅ curl returns all 20
 - [ ] **1.7** `GET /api/v1/exercises/:id`, `AppError`, `notFound` and `errorHandler`. ✅ Unknown id → 404 `{ error: { code, message } }`
 - [ ] **1.8** `?search`, `?muscle`, `?equipment` filters reading `req.query` by hand. ✅ `?search=curl` filters
 - [ ] **1.9** Validation with Zod and a `validate(schema)` middleware. ✅ `?pageSize=abc` → 400
@@ -56,7 +56,7 @@ Goal: understand a relational database and talk to it without an ORM.
 - [ ] **2.1** `docker-compose.yml` with `postgres:16` and `.env.example`. ✅ Connect with `psql`
 - [ ] **2.2** `sql/001_init.sql`: `CREATE TABLE exercise`, `INSERT`, `SELECT`, `WHERE`, `ILIKE`, `= ANY(array)`, `ORDER BY`, `LIMIT/OFFSET`, `COUNT`. Arrays vs. a `Muscle` table
 - [ ] **2.3** Connect with `pg` (Pool); `findById` in SQL; parameterized queries and SQL injection
-- [ ] **2.4** Idempotent import with `INSERT … ON CONFLICT (slug) DO UPDATE`, text only. ✅ Running it twice keeps the same `COUNT`
+- [ ] **2.4** Idempotent import with `INSERT … ON CONFLICT (slug) DO UPDATE`, including image paths. ✅ Running it twice keeps the same `COUNT`
 - [ ] **2.5** Filters and pagination in SQL with a safe dynamic `WHERE`. ✅ Tests against `spartia_test`
 - [ ] **2.6** `POST` with `INSERT … RETURNING`. ✅ Survives a restart
 - [ ] **2.7** Indexes (btree on `name`, GIN on `primary_muscles`) with `EXPLAIN ANALYZE` before and after
@@ -73,11 +73,11 @@ Goal: see what an ORM does for you (and what it doesn't) after doing the work by
 
 ## Module 4 · iOS mobile app (Claude writes and explains)
 
-- [ ] **4.0** **Official frontend plan** in `docs/PLAN-MOBILE.md` + ADR `0002-mobile-architecture.md`: clean architecture by feature (`domain/`, `data/`, `presentation/`), dependency rule `presentation → domain ← data` enforced with ESLint, shared `core/` and `ui/`, state, testing per layer, path aliases and CI with GitHub Actions. *Steps 4.1–4.4 get rewritten based on this plan.*
+- [ ] **4.0** **Official frontend plan** in `docs/PLAN-MOBILE.md` + ADR `0003-mobile-architecture.md`: clean architecture by feature (`domain/`, `data/`, `presentation/`), dependency rule `presentation → domain ← data` enforced with ESLint, shared `core/` and `ui/`, state, testing per layer, path aliases and CI with GitHub Actions. *Steps 4.1–4.4 get rewritten based on this plan.*
 - [ ] **4.1** React Native CLI `init` (confirm bundle id `app.spartia.mobile` and the name "Spartia"), `pod install`. ✅ The welcome app runs in the simulator
 - [ ] **4.2** Theme from `design/tokens.json`, Inter font, `ThemeProvider`, `AppText` and `Screen`. ✅ It switches with dark mode
 - [ ] **4.3** React Navigation, TanStack Query, HTTP client (`http://localhost:3000`) and `useExercises` with `useInfiniteQuery`
-- [ ] **4.4** `ExerciseListScreen` (infinite scroll, 300 ms debounced search, loading/error/empty states) and `ExerciseRow` with a 52×52 placeholder thumbnail. ✅ Scroll to the last exercise; "curl" filters
+- [ ] **4.4** `ExerciseListScreen` (infinite scroll, 300 ms debounced search, loading/error/empty states) and `ExerciseRow` with a 52×52 exercise image (placeholder while loading or if missing). ✅ Scroll to the last exercise; "curl" filters
 
 ## Wrap-up of the first stage
 
@@ -90,7 +90,7 @@ Goal: see what an ORM does for you (and what it doesn't) after doing the work by
 - `packages/shared` with shared types and Zod schemas
 - A `Muscle` table instead of arrays
 - Spanish exercise names (`nameEs` or translations)
-- Licensed images (wger CC-BY-SA, a paid provider or our own photos)
+- **Before monetizing:** replace the dataset images with our own or licensed ones (wger CC-BY-SA, a paid provider) and write a new ADR
 - Deploy: database on Neon and API in the cloud
 
 ---

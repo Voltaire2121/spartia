@@ -31,7 +31,7 @@ spartia/
 
 ## Exercise data
 
-The initial catalog is imported from [free-exercise-db](https://github.com/yuhonas/free-exercise-db) (Unlicense). Only the text is copied, not the images, because their origin is unclear. Details in [ADR 0001](docs/decisions/0001-exercise-data-source.md).
+The initial catalog is imported from [free-exercise-db](https://github.com/yuhonas/free-exercise-db) (Unlicense). The dataset images are used during the MVP only: their origin is unclear, so they'll be replaced with our own before the app is monetized. Details in [ADR 0001](docs/decisions/0001-exercise-data-source.md) and [ADR 0002](docs/decisions/0002-use-dataset-images-for-mvp.md).
 
 ## Getting started
 

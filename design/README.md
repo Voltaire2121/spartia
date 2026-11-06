@@ -25,7 +25,7 @@ This folder is the app's **visual source of truth**. It was exported from the Sp
 | `font-variant-numeric: tabular-nums` | `fontVariant: ['tabular-nums']` |
 | Dark theme `[data-theme="dark"]` | `useColorScheme()` + `dark` theme tokens |
 
-The gray thumbnails with a dumbbell are placeholders: the app shows each exercise's real image (once licensed images exist; see `docs/decisions/0001-exercise-data-source.md`).
+The gray thumbnails with a dumbbell are placeholders: the app shows each exercise's real image (from the dataset during the MVP; see `docs/decisions/0002-use-dataset-images-for-mvp.md`). The placeholder is still used while an image loads or if it's missing.
 
 ## Screen index
 
